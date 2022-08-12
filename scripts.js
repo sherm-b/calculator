@@ -19,9 +19,8 @@ function operate(operator, num1, num2){
     return value
 }
 
-let display = document.getElementById('display');
-let inputButtons = document.getElementsByClassName('input');
-let storedNum = display.textContent;
+const display = document.getElementById('display');
+const inputButtons = document.getElementsByClassName('input');
 
 for (let i = 0; i < inputButtons.length; i++){
     inputButtons[i].addEventListener('click', function (e) {
@@ -44,4 +43,31 @@ clearButton.addEventListener('click', clearDisplay)
 
 function clearDisplay(){
     display.textContent = '';
+}
+
+const operatorButtons = document.getElementsByClassName('operator')
+const equalsButton = document.getElementById('equals')
+
+operatorButtons.addEventListener('click', )
+let operator
+let firstOperand
+
+function storeFirst(event){
+    switch (event.target){
+        case plusButton:
+            operator = add;
+            break;
+        case minusButton:
+            operator = subtract;
+            break;
+        case divideButton:
+            operator = divide;
+            break;
+        case multiplyButton:
+            operator = multiply;
+            break;
+    }
+
+    firstOperand = display.textContent;
+    clearDisplay()
 }
