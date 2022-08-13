@@ -33,41 +33,56 @@ for (let i = 0; i < inputButtons.length; i++){
 })
 }
 
-const plusButton = document.getElementById('plus');
-const minusButton = document.getElementById('minus');
-const divideButton = document.getElementById('divide');
-const multiplyButton = document.getElementById('times');
 
 const clearButton = document.getElementById('clear')
-clearButton.addEventListener('click', clearDisplay)
+clearButton.addEventListener('click', clearDispAndVals())
 
-function clearDisplay(){
-    display.textContent = '';
+function clearDispAndVals(){
+    clearDisplay()
+    firstOperand = undefined;
+    secondOperand = undefined;
 }
 
 const operatorButtons = document.getElementsByClassName('operator')
 const equalsButton = document.getElementById('equals')
 
-operatorButtons.addEventListener('click', )
+
 let operator
 let firstOperand
+let secondOperand
 
-function storeFirst(event){
-    switch (event.target){
-        case plusButton:
-            operator = add;
-            break;
-        case minusButton:
-            operator = subtract;
-            break;
-        case divideButton:
-            operator = divide;
-            break;
-        case multiplyButton:
-            operator = multiply;
-            break;
-    }
-
-    firstOperand = display.textContent;
-    clearDisplay()
+function clearDisplay(){
+    display.textContent = '';
 }
+
+for (let i = 0; i < operatorButtons.length; i++){
+    switch(operatorButtons[i].id){
+        case 'plus':
+            operatorButtons[i].addEventListener('click', () => {
+                operator = add;
+                firstOperand = display.textContent
+                clearDisplay()
+            })
+            break;
+        case 'minus':
+            operatorButtons[i].addEventListener('click', () => {
+                operator = subtract;
+                firstOperand = display.textContent;
+                clearDisplay()
+            })
+            break;
+        case 'divide':
+            operatorButtons[i].addEventListener('click', () => {
+                operator = divide;
+                firstOperand = display.textContent;
+                clearDisplay()
+            })
+            break;
+        case 'times':
+            operatorButtons[i].addEventListener('click', () => {
+                operator = multiply;
+                firstOperand = display.textContent;
+                clearDisplay();
+            })
+            }
+    }
