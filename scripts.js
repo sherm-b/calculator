@@ -81,18 +81,28 @@ for (let i = 0; i < operatorButtons.length; i++){
         case 'minus':
             operatorButtons[i].addEventListener('click', () => {
                 operator = subtract;
-                
+                secondOperand = undefined
+                displayVal = parseInt(display.textContent)
+                eval(displayVal)
+                clearDisplay()
             })
             break;
         case 'divide':
             operatorButtons[i].addEventListener('click', () => {
                 operator = divide;
-                
+                secondOperand = undefined
+                displayVal = parseInt(display.textContent)
+                eval(displayVal)
+                clearDisplay()
             })
             break;
         case 'times':
             operatorButtons[i].addEventListener('click', () => {
                 operator = multiply
+                secondOperand = undefined
+                displayVal = parseInt(display.textContent)
+                eval(displayVal)
+                clearDisplay()
             })
             break;
         case 'equals':
