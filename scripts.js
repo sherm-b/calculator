@@ -43,7 +43,6 @@ const equalsButton = document.getElementById('equals')
 let operator
 let firstOperand
 let secondOperand
-let finalAnswer
 let result
 let displayVal
 let equals = false
@@ -73,7 +72,7 @@ for (let i = 0; i < operatorButtons.length; i++){
             operatorButtons[i].addEventListener('click', () => {
                 operator = add;
                 secondOperand = undefined
-                displayVal = parseInt(display.textContent)
+                displayVal = parseFloat(display.textContent)
                 eval(displayVal)
                 clearDisplay()
             })
@@ -82,7 +81,7 @@ for (let i = 0; i < operatorButtons.length; i++){
             operatorButtons[i].addEventListener('click', () => {
                 operator = subtract;
                 secondOperand = undefined
-                displayVal = parseInt(display.textContent)
+                displayVal = parseFloat(display.textContent)
                 eval(displayVal)
                 clearDisplay()
             })
@@ -91,7 +90,7 @@ for (let i = 0; i < operatorButtons.length; i++){
             operatorButtons[i].addEventListener('click', () => {
                 operator = divide;
                 secondOperand = undefined
-                displayVal = parseInt(display.textContent)
+                displayVal = parseFloat(display.textContent)
                 eval(displayVal)
                 clearDisplay()
             })
@@ -100,14 +99,14 @@ for (let i = 0; i < operatorButtons.length; i++){
             operatorButtons[i].addEventListener('click', () => {
                 operator = multiply
                 secondOperand = undefined
-                displayVal = parseInt(display.textContent)
+                displayVal = parseFloat(display.textContent)
                 eval(displayVal)
                 clearDisplay()
             })
             break;
         case 'equals':
             operatorButtons[i].addEventListener('click', () => {
-                    displayVal = parseInt(display.textContent)
+                    displayVal = parseFloat(display.textContent)
                     equals = true
                     eval(displayVal)
             })
@@ -118,11 +117,11 @@ function eval(num){
     if (equals == false){
         if (firstOperand == undefined){
             firstOperand = num
-            return
         } else if (result == undefined){
             firstOperand = operate(operator, firstOperand, num)
-            return
-        } else if (num == result){
+        } else if (num !== result){
+            firstOperand = operate(operator, firstOperand, num)
+        } else {
             return
         }
     } else {
