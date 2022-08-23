@@ -27,7 +27,7 @@ for (let i = 0; i < inputButtons.length; i++){
     number = e.target.getAttribute('id')
     if (display.textContent.includes('.') && number == '.'){
         return
-    } else {
+    } else if (display.textContent.length < 9){
     display.textContent += `${number}`
     }
 })
@@ -131,11 +131,12 @@ function eval(num){
 
         result = operate(operator, firstOperand, secondOperand)
         
-
         display.textContent = result
+        if (display.textContent.length > 9 && display.textContent.includes('.')){
+            display.textContent = parseFloat(display.textContent).toFixed(9)
+        }
         firstOperand = result
         equals = false
     }
 }
-
 
