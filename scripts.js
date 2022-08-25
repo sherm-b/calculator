@@ -127,21 +127,22 @@ function eval(num){
         }
 
         if (secondOperand == 0 && operator == divide){
-            display.textContent = 'ERR: lol nice try!'
+            clearDispAndVals()
+            display.textContent = 'ERR: lol'
+            equals = false
             return
         }
 
         result = operate(operator, firstOperand, secondOperand)
         
         display.textContent = result
-        if (display.textContent == Infinity || display.textContent == NaN){
-            display.textContent = 'ERR: Don\'t Do That!'
+        if (display.textContent.includes('Infinity') || display.textContent.includes('NaN')){
+            display.textContent = 'ERR: C\'mon'
+            return
         } else if (display.textContent.length > 9 && display.textContent.includes('.')){
-            display.textContent = parseFloat(display.textContent).toFixed(9)
+            display.textContent = parseFloat(display.textContent).toFixed(8)
         } else if (display.textContent.length > 9){
-            display.textContent = 'ERR: Return Value Too Large! Sorry!'
-        } else {
-            
+            display.textContent = 'ERR'
         }
 
 
