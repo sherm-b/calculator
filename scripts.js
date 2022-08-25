@@ -111,7 +111,7 @@ function eval(num){
     if (equals == false){
         if (firstOperand == undefined){
             firstOperand = num;
-        } else {
+        } else if (secondOperand !== undefined){
             firstOperand = operate(operator, firstOperand, num);
         }
     } else {
