@@ -137,12 +137,17 @@ function eval(num){
         
         display.textContent = result
         if (display.textContent.includes('Infinity') || display.textContent.includes('NaN')){
+            clearDispAndVals()
             display.textContent = 'ERR: C\'mon'
+            equals = false
             return
         } else if (display.textContent.length > 9 && display.textContent.includes('.')){
             display.textContent = parseFloat(display.textContent).toFixed(8)
         } else if (display.textContent.length > 9){
+            clearDispAndVals()
             display.textContent = 'ERR'
+            equals = false
+            return
         }
 
 
