@@ -70,38 +70,39 @@ for (let i = 0; i < operatorButtons.length; i++){
     switch(operatorButtons[i].id){
         case 'plus':
             operatorButtons[i].addEventListener('click', () => {
-                operator = add;
                 secondOperand = undefined
                 displayVal = parseFloat(display.textContent)
                 eval(displayVal)
+                operator = add
                 clearDisplay()
             })
             break;
         case 'minus':
             operatorButtons[i].addEventListener('click', () => {
-                operator = subtract;
                 secondOperand = undefined
                 displayVal = parseFloat(display.textContent)
                 eval(displayVal)
+                operator = subtract;
                 clearDisplay()
             })
             break;
         case 'divide':
             operatorButtons[i].addEventListener('click', () => {
-                operator = divide;
                 secondOperand = undefined
                 displayVal = parseFloat(display.textContent)
                 eval(displayVal)
+                operator = divide;
                 clearDisplay()
             })
             break;
         case 'times':
             operatorButtons[i].addEventListener('click', () => {
-                operator = multiply
                 secondOperand = undefined
                 displayVal = parseFloat(display.textContent)
                 eval(displayVal)
+                operator = multiply
                 clearDisplay()
+                
             })
             break;
         case 'equals':
@@ -117,24 +118,33 @@ function eval(num){
     if (equals == false){
         if (firstOperand == undefined){
             firstOperand = num
-        } else if (result == undefined){
-            firstOperand = operate(operator, firstOperand, num)
-        } else if (num !== result){
-            firstOperand = operate(operator, firstOperand, num)
         } else {
-            return
+            firstOperand = operate(operator, firstOperand, num)
         }
     } else {
         if (secondOperand == undefined){
             secondOperand = num
         }
 
+        if (secondOperand == 0 && operator == divide){
+            display.textContent = 'ERR: lol nice try!'
+            return
+        }
+
         result = operate(operator, firstOperand, secondOperand)
         
         display.textContent = result
-        if (display.textContent.length > 9 && display.textContent.includes('.')){
+        if (display.textContent == Infinity || display.textContent == NaN){
+            display.textContent = 'ERR: Don\'t Do That!'
+        } else if (display.textContent.length > 9 && display.textContent.includes('.')){
             display.textContent = parseFloat(display.textContent).toFixed(9)
+        } else if (display.textContent.length > 9){
+            display.textContent = 'ERR: Return Value Too Large! Sorry!'
+        } else {
+            
         }
+
+
         firstOperand = result
         equals = false
     }
